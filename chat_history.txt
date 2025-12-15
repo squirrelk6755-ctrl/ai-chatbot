@@ -1,0 +1,6 @@
+You: hello
+Chatbot: Hello! How can I help you?
+You: time
+Chatbot: Current time is 21:40:06
+You: bye
+Chatbot: Goodbye!
