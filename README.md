@@ -1,17 +1,17 @@
-# AI-Powered Chatbot
+# AI Chatbot – Study Assistant
 
-An AI-powered chatbot built using Python and the OpenAI API. The project supports multiple interaction modes including console-based chat, GUI-based chat, and voice-based communication. It demonstrates real-world usage of natural language processing and AI integration.
+An AI-powered chatbot built using Python, OpenAI API, and Streamlit.  
+The chatbot is designed to assist users in studying by answering questions, explaining concepts, and providing interactive learning support.
 
 ---
 
 ## Features
 
-- AI-based conversational responses using OpenAI API
-- Console-based chatbot
-- GUI chatbot using Tkinter
-- Voice-based chatbot with speech recognition and text-to-speech
-- Modular and extensible Python code
-- Ready for web and mobile conversion
+- AI-based conversational responses using OpenAI
+- Web-based interactive chatbot interface
+- Secure API key management using Streamlit Secrets
+- Supports study-related queries (programming, concepts, explanations)
+- Deployed as a live web application
 
 ---
 
@@ -19,37 +19,41 @@ An AI-powered chatbot built using Python and the OpenAI API. The project support
 
 - Python 3
 - OpenAI API
-- Tkinter (GUI)
-- SpeechRecognition
-- pyttsx3 (Text-to-Speech)
-- Streamlit (for web deployment)
+- Streamlit
+- Environment variables for security
 
 ---
 
+## Live Demo
+
+https://ai-chatbot-kvkcnzwdx3z7g9sn93zbzi.streamlit.app
+
+---
 ## Project Structure
 
 ai-chatbot/
-│── ai_chatbot.py
-│── gui_chatbot.py
-│── voice_chatbot.py
 │── streamlit_app.py
+│── requirements.txt
 │── README.md
 
 
 ---
 
-## How to Run (Local)
+## How It Works
 
-### Console Chatbot
-```bash
-python ai_chatbot.py
+- User enters a message in the chat interface
+- The message is sent to the OpenAI API
+- The AI processes the input and generates a response
+- The response is displayed in real time on the web interface
 
-GUI Chatbot
-python gui_chatbot.py
+---
 
-Voice-Based Chatbot
-python voice_chatbot.py
+## Deployment
 
-Deployment
+The application is deployed using **Streamlit Community Cloud**.  
+The OpenAI API key is securely stored using Streamlit Secrets and is not exposed in the source code.
 
-The chatbot can be deployed as a web application using Streamlit and hosted online for public access.
+---
+
+
+
