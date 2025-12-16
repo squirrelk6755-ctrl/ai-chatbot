@@ -3,4 +3,3 @@ openai
 PyPDF2
 SpeechRecognition
 streamlit-audiorec
-pyttsx3
