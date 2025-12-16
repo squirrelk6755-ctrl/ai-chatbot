@@ -5,8 +5,6 @@ from PyPDF2 import PdfReader
 import speech_recognition as sr
 from st_audiorec import st_audiorec
 import tempfile
-import pyttsx3
-from io import StringIO
 
 # ---------------------------
 # OpenAI Client (SAFE)
@@ -41,7 +39,7 @@ if "context" not in st.session_state:
     st.session_state.context = ""
 
 # ---------------------------
-# File Upload
+# File Upload Section
 # ---------------------------
 uploaded_file = st.file_uploader(
     "Upload notes (PDF / TXT) or image (optional)",
@@ -55,19 +53,19 @@ if uploaded_file:
         for page in reader.pages:
             text += page.extract_text() or ""
         st.session_state.context = text
-        st.success("PDF uploaded. Ask questions from it.")
+        st.success("PDF uploaded successfully. Ask questions from it.")
 
     elif uploaded_file.type == "text/plain":
         text = uploaded_file.read().decode("utf-8")
         st.session_state.context = text
-        st.success("Notes uploaded. Ask questions.")
+        st.success("Notes uploaded successfully. Ask questions.")
 
     else:
         st.image(uploaded_file, caption="Uploaded Image")
         st.info("Image uploaded. Describe it in text to ask questions.")
 
 # ---------------------------
-# 🎤 Voice Input
+# 🎤 Voice Input (Mic)
 # ---------------------------
 st.subheader("🎤 Voice Input")
 
@@ -85,9 +83,9 @@ if audio_bytes:
 
     try:
         voice_text = recognizer.recognize_google(audio)
-        st.success(f"Recognized: {voice_text}")
+        st.success(f"Recognized text: {voice_text}")
     except:
-        st.error("Voice not recognized. Try again.")
+        st.warning("Could not recognize voice. Please try again.")
 
 # ---------------------------
 # Display Chat History
@@ -118,7 +116,7 @@ if user_input:
         messages.append(
             {
                 "role": "system",
-                "content": "Use the following notes:\n" + st.session_state.context
+                "content": "Use the following notes to answer:\n" + st.session_state.context
             }
         )
 
@@ -138,13 +136,8 @@ if user_input:
         {"role": "assistant", "content": bot_reply}
     )
 
-    # 🔊 Voice Output
-    engine = pyttsx3.init()
-    engine.say(bot_reply)
-    engine.runAndWait()
-
 # ---------------------------
-# ⬇️ Download Chat History
+# Download Chat History
 # ---------------------------
 st.divider()
 st.subheader("⬇️ Download Chat History")
